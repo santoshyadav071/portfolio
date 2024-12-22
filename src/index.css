@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Light theme */
+body.light {
+  background-color: white;
+  color: #4A4A4A;
+}
+
+body.light a,
+body.light button {
+  color: #807d7d;
+}
+
+/* Dark theme */
+body.dark {
+  background-color: #111827;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body.dark a,
+body.dark button {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+
+.skill-card {
+  transform: perspective(1000px) rotateX(0) rotateY(0);
+  transition: transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: perspective(1000px) scale(1.05) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "category": "Project",
+    "title": "The Weather App",
+    "description": "Integrated a dynamic weather app in my portfolio, leveraging API data to display real-time conditions.",
+    "image": "w.png",
+    "views": "1K",
+    "comments": "6",
+    "Livedemo": "http://weatherchake.netlify.app"
+  },
+  {
+    "id": 2,
+    "category": "Project",
+    "title": "Ecommerce Website",
+    "description": "Developed a fully functional e-commerce website with user-friendly navigation, seamless product browsing, and a responsive design, enhancing the online shopping experience.",
+    "image": "ss.png",
+    "views": "1K",
+    "comments": "6",
+    "Livedemo": "http://ecosantu.netlify.app"
+  }
+  
+]

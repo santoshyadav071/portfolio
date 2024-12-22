@@ -1,0 +1,48 @@
+[
+    {
+      "title": "HTML",
+      "description": "Proficient in using HTML to structure and build web pages.",
+      "image": "hht.png"
+    },
+    {
+      "title": "CSS",
+      "description": "Skilled in CSS for styling and creating responsive web designs.",
+      "image": "csss.png"
+    },
+    {
+      "title": "JavaScript",
+      "description": "Experienced in JavaScript for adding dynamic and interactive features.",
+      "image": "jss.png"
+    },
+    {
+      "title": "React",
+      "description": "Proficient in React for developing efficient, component-based web applications.",
+      "image": "reactt.png"
+    },
+    {
+      "title": "Tailwind",
+      "description": "Skilled in using Tailwind CSS for building custom-styled user interfaces.",
+      "image": "tailwind.png"
+    },
+    {
+      "title": "Bootstrap",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "boot.webp"
+    },
+    {
+      "title": "Git",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "git.png"
+    },
+    {
+      "title": "Github",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "github.png"
+    },
+    {
+      "title": "AI",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "ai.png"
+    }
+  ]
+  
