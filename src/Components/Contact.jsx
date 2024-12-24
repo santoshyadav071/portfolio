@@ -15,19 +15,27 @@ const Contact = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Process form data here
+    console.log("Form Data Submitted:", formData);
+
+    // Clear form after submission
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
+
   return (
     <div className="p-4 md:p-10">
       <h1 className="text-2xl font-bold mb-4 text-center">Contact Us</h1>
       <p className="mb-4 text-center">
-  
-
-"Feel free to reach out to me! Whether you have a question, an opportunity, or just want to say hello, I’d love to hear from you. You can connect with me through the form below, or drop me a message on my social platforms. Let’s create something amazing together!"  
-
-Let me know if you want any changes or a different tone.
+        "Feel free to reach out to me! Whether you have a question, an opportunity, or just want to say hello, I’d love to hear from you. You can connect with me through the form below, or drop me a message on my social platforms. Let’s create something amazing together!"
       </p>
       <form
-        action="https://formsubmit.co/sy7304063887@gmail.com"
-        method="POST"
+        onSubmit={handleSubmit}
         className="space-y-4 max-w-lg mx-auto"
       >
         <div>
