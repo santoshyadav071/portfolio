@@ -30,7 +30,7 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-full">
-          <img src='final.png' alt="Showcase" className="object-cover w-full h-auto animate-pulse" />
+          <img src='final.png' alt="Showcase" className="object-cover w-full h-auto" />
         </div>
       </div>
     </section>

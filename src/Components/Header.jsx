@@ -2,18 +2,22 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import myimage from "../assets/myimage.jpg";
 
-
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check localStorage for saved preference or default to true (dark mode)
+    return localStorage.getItem('theme') === 'light' ? false : true;
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark');
       document.body.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.body.classList.add('light');
       document.body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
 
@@ -25,14 +29,14 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const cvUrl = 'mycv.pdf';
+  const cvUrl = 'santosh.cv.pdf';
 
   return (
     <header className={`sticky top-0 z-50 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link to="/" className="flex title-font font-medium items-center mb-4 md:mb-0">
           <div>
-            <img src={myimage} width={40} alt="Logo" className='rounded-full' />
+            <img src={myimage} width={40} alt="Logo" className="rounded-full" />
           </div>
           <span className="ml-3 text-xl font-bold hover:text-blue-700 cursor-pointer">Santosh</span>
         </Link>
@@ -47,10 +51,10 @@ const Header = () => {
           <Link to="/projects" className="mr-5 hover:text-blue-700 font-bold cursor-pointer">Project</Link>
           <Link to="/contact" className="mr-5 hover:text-blue-700 font-bold cursor-pointer">Contact Me</Link>
         </nav>
-        <a 
-          href={cvUrl} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={cvUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center border-0 py-1 px-3 font-bold focus:outline-none rounded text-base mt-4 md:mt-0 text-black hover:text-blue-700"
         >
           Download CV
