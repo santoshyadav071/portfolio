@@ -18,6 +18,17 @@
     "views": "1K",
     "comments": "6",
     "Livedemo": "http://ecosantu1.netlify.app"
+  },
+  
+  {
+    "id": 3,
+    "category": "Project",
+    "title": "College Website",
+    "description": "Developed a fully functional college website with intuitive navigation, responsive design, and organized content structure, improving user engagement and accessibility.",
+    "image": "co.png",
+    "views": "1K",
+    "comments": "6",
+    "Livedemo": "kulbhaskar-ashram-y8pj-l7pz2oc07-santoshyadav071s-projects.vercel.app"
   }
   
 ]
