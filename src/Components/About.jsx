@@ -3,7 +3,7 @@ import data from "../api/data.json";
 import myimage from "../assets/myimage.jpg";
 
 export const About = () => {
-  // Animation variants (unchanged)
+  // Animation variants
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -21,75 +21,113 @@ export const About = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const skillItem = {
+    hidden: { scale: 0.9, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.3
+      }
+    },
+    hover: {
+      scale: 1.05,
+      boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
+      transition: {
+        duration: 0.2
       }
     }
   };
 
   return (
     <motion.section 
-      className="py-8"
+      className="py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
       initial="hidden"
       animate="visible"
       variants={container}
     >
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-center font-bold text-2xl md:text-3xl mb-4"
-          variants={item}
-        >
-          About Me
-        </motion.h2>
-        
+      <div className="container mx-auto px-4 max-w-6xl">
         <motion.div 
-          className="flex justify-center mb-4"
+          className="text-center mb-12"
           variants={item}
         >
-          <img 
-            src={myimage} 
-            className="rounded-full w-40 sm:w-60" 
-            alt="Profile" 
-          />
+          <h2 className="font-bold text-3xl md:text-4xl mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+            About Me
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
         </motion.div>
         
-        <motion.p 
-          className="text-base md:text-lg text-center mb-6"
-          variants={item}
-        >
-          I'm Santosh Yadav, a passionate Frontend Developer specializing in
-          <span className="font-bold text-blue-500"> React js</span>. With a strong foundation in HTML,
-          <span className="font-bold text-blue-500">Tailwind CSS</span>, and JavaScript, I
-          focus on building dynamic and responsive web applications. I enjoy
-          creating user-friendly interfaces, optimizing performance, and
-          ensuring seamless user experiences. Leveraging frameworks like
-          Tailwind and Bootstrap, I bring ideas to life through clean,
-          maintainable code. My goal is to continuously enhance my skills and
-          contribute to impactful projects that push the boundaries of modern
-          web development. Here are my skills:
-        </motion.p>
+        <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
+          <motion.div 
+            className="flex-shrink-0"
+            variants={item}
+            whileHover={{ scale: 1.02 }}
+          >
+            <img 
+              src={myimage} 
+              className="rounded-full w-48 sm:w-56 border-4 border-white dark:border-gray-700 shadow-lg" 
+              alt="Profile" 
+            />
+          </motion.div>
+          
+          <motion.div 
+            className="text-center lg:text-left"
+            variants={item}
+          >
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              I'm <span className="font-semibold text-blue-500 dark:text-blue-400">Santosh Yadav</span>, a passionate Frontend Developer specializing in
+              <span className="font-bold text-blue-500 dark:text-blue-400"> React.js</span>. With a strong foundation in HTML,
+              <span className="font-bold text-blue-500 dark:text-blue-400"> Tailwind CSS</span>, and JavaScript, I
+              focus on building dynamic and responsive web applications.
+            </p>
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+              I enjoy creating user-friendly interfaces, optimizing performance, and
+              ensuring seamless user experiences. My goal is to continuously enhance my skills and
+              contribute to impactful projects that push the boundaries of modern
+              web development.
+            </p>
+          </motion.div>
+        </div>
         
         <motion.div 
-          className="skills-container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4"
+          className="text-center mb-8"
+          variants={item}
+        >
+          <h3 className="font-bold text-2xl md:text-3xl mb-4 text-gray-800 dark:text-white">
+            My <span className="text-blue-500">Skills</span>
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Technologies I've been working with recently
+          </p>
+        </motion.div>
+        
+        <motion.div 
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
           variants={container}
         >
           {data.map((item, index) => (
             <motion.div
               key={index}
-              className="skill-card border border-gray-200 dark:border-gray-600 p-3 rounded-md transition-all"
-              variants={item}
-              whileHover={{ 
-                scale: 1.03,
-                boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
-              }}
+              className="skill-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all"
+              variants={skillItem}
+              whileHover="hover"
             >
-              <img
-                src={`${item.image}`}
-                alt={item.title}
-                className="w-14 h-14 mx-auto"
-              />
-              <h3 className="text-center font-semibold text-base mt-2">
-                {item.title}
-              </h3>
+              <div className="flex flex-col items-center">
+                <img
+                  src={`${item.image}`}
+                  alt={item.title}
+                  className="w-16 h-16 object-contain mb-4"
+                />
+                <h3 className="text-center font-medium text-gray-800 dark:text-gray-200">
+                  {item.title}
+                </h3>
+              </div>
             </motion.div>
           ))}
         </motion.div>

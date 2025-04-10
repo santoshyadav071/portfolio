@@ -6,39 +6,9 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Light theme */
-body.light {
-  background-color: white;
-  color: #4A4A4A;
-}
-
-body.light a,
-body.light button {
-  color: #807d7d;
-}
-
-/* Dark theme */
-body.dark {
-  background-color: #111827;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-body.dark a,
-body.dark button {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+body {
+  background-color: #f0f4f8;
+  color: #333;
 }
 
 .slider {

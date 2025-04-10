@@ -2,140 +2,152 @@ import { motion } from "framer-motion";
 import posts from "../api/posts.json";
 
 export const Project = ({ darkMode }) => {
-  // Animation variants
+  // Enhanced animation variants
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
         when: "beforeChildren"
       }
     }
   };
 
   const item = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1]
       }
     }
   };
 
-  const hoverEffect = {
+  const cardHover = {
+    y: -8,
     scale: 1.02,
-    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
+    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+    transition: { 
+      type: "spring", 
+      stiffness: 300,
+      damping: 10 
+    }
+  };
+
+  const imageHover = {
+    scale: 1.05,
+    transition: { duration: 0.4 }
   };
 
   return (
     <motion.section 
-      className="body-font"
+      className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
       initial="hidden"
       animate="visible"
       variants={container}
     >
-      <div className="container px-5 py-24 mx-auto">
-        <motion.h2 
-          className="font-bold text-center text-xl mb-4"
-          variants={item}
-        >
-          Projects
-        </motion.h2>
-        
-        <motion.p 
-          className="text-center mb-6"
-          variants={item}
-        >
-          Explore my collection of projects showcasing practical applications of my front-end development skills. Each project highlights my expertise in using modern web technologies to solve real-world problems and deliver engaging user experiences. From responsive designs to interactive interfaces, these projects are crafted with a focus on efficiency, functionality, and creativity.
-        </motion.p>
+      <div className="container px-5 mx-auto max-w-7xl">
+        <motion.div className="text-center mb-20" variants={item}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6  text-gray-800 dark:text-white">
+            My <span className="text-blue-400">projects</span>
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mb-8"></div>
+          <p className="text-xl  text-gray-900 dark:text-white max-w-3xl mx-auto leading-relaxed">
+            Explore my collection of professional projects showcasing cutting-edge web development solutions and innovative design approaches.
+          </p>
+        </motion.div>
         
         <motion.div 
-          className="flex flex-wrap -m-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 "
           variants={container}
         >
           {posts.map(post => (
             <motion.div
               key={post.id}
-              className="p-4 sm:w-1/2 md:w-1/3"
+              className="group"
               variants={item}
-              whileHover={{ scale: 1.01 }}
             >
               <motion.div
-                className={`h-full border-2 rounded-lg overflow-hidden ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}
-                whileHover={hoverEffect}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="h-full bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl"
+                whileHover={cardHover}
+                initial={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.2)" }}
               >
-                <motion.img
-                  className="lg:h-48 md:h-36 w-full object-cover object-center"
-                  src={post.image}
-                  alt={post.title}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <div className="p-6">
-                  <motion.h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                    {post.category}
-                  </motion.h2>
-                  <motion.h1 className="title-font text-lg font-medium mb-3">
-                    {post.title}
-                  </motion.h1>
-                  <motion.p className="leading-relaxed mb-3">
-                    {post.description}
-                  </motion.p>
-                  <motion.div className="flex items-center flex-wrap">
+                <div className="relative overflow-hidden">
+                  <motion.img
+                    className="w-full h-56 object-cover object-top"
+                    src={post.image}
+                    alt={post.title}
+                    whileHover={imageHover}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <motion.a 
-                      className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
                       href={post.Livedemo}
-                      whileHover={{ x: 3 }}
+                      className="inline-flex items-center text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium transition-colors"
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: true }}
                     >
-                      Live Demo
-                      <svg
-                        className="w-4 h-4 ml-2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="M12 5l7 7-7 7" />
+                      Live Preview
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </motion.a>
-                    <motion.span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                      <svg
-                        className="w-4 h-4 mr-1"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                        <circle cx="12" cy="12" r="3" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600"></div>
+                </div>
+                
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-gray-700 rounded-full">
+                      {post.category}
+                    </span>
+                    <div className="flex space-x-3 text-sm text-gray-400">
+                      <span className="flex items-center">
+                        <svg className="w-4 h-4 mr-1 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        {post.views}
+                      </span>
+                      <span className="flex items-center">
+                        <svg className="w-4 h-4 mr-1 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                        {post.comments}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold mb-3  text-gray-800 dark:text-white">
+                    {post.title}
+                  </h3>
+                  
+                  <p className="mb-6 text-gray-800 dark:text-gray-200 leading-relaxed">
+                    {post.description}
+                  </p>
+                  
+                  <div className="flex justify-between items-center">
+                    <a 
+                      href={post.Livedemo}
+                      className="inline-flex items-center font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                    >
+                      View Case Study
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
-                      {post.views}
-                    </motion.span>
-                    <motion.span className="text-gray-400 inline-flex items-center leading-none text-sm">
-                      <svg
-                        className="w-4 h-4 mr-1"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-                      </svg>
-                      {post.comments}
-                    </motion.span>
-                  </motion.div>
+                    </a>
+                    
+                    <div className="flex space-x-2">
+                      {post.tags?.map((tag, index) => (
+                        <span key={index} className="text-xs px-2 py-1 bg-gray-700 text-gray-300 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

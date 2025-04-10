@@ -1,72 +1,92 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import myimage from "../assets/myimage.jpg";
 
 const Header = () => {
+  const cvUrl = 'santosh.cv.pdf';
   const [darkMode, setDarkMode] = useState(() => {
-    // Check localStorage for saved preference or default to true (dark mode)
-    return localStorage.getItem('theme') === 'light' ? false : true;
+    // Check localStorage for saved preference or use system preference
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode !== null ? JSON.parse(savedMode) : window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Apply dark mode class to document
     if (darkMode) {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-      localStorage.setItem('theme', 'dark');
+      document.documentElement.classList.add('dark');
     } else {
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      document.documentElement.classList.remove('dark');
     }
+    // Save preference to localStorage
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
 
-  const toggleTheme = () => {
+  const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const cvUrl = 'santosh.cv.pdf';
-
   return (
-    <header className={`sticky top-0 z-50 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300 shadow-md dark:shadow-gray-800">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <Link to="/" className="flex title-font font-medium items-center mb-4 md:mb-0">
-          <div>
-            <img src={myimage} width={40} alt="Logo" className="rounded-full" />
+        <Link to="/" className="flex title-font font-medium items-center mb-4 md:mb-0 group">
+          <div className="ring-2 ring-gray-300 dark:ring-gray-600 rounded-full p-0.5 group-hover:ring-blue-500 transition-all">
+            <img 
+              src={myimage} 
+              width={40} 
+              alt="Logo" 
+              className="rounded-full" 
+            />
           </div>
-          <span className="ml-3 text-xl font-bold hover:text-blue-700 cursor-pointer">Santosh</span>
+          <span className="ml-3 text-xl font-bold hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer transition-colors">
+            Santosh
+          </span>
         </Link>
-        <button onClick={toggleMenu} className="md:hidden flex items-center p-2 rounded text-black hover:text-blue-700 focus:outline-none">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-          </svg>
-        </button>
-        <nav className={`md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
-          <Link to="/" className="mr-5 hover:text-blue-700 font-bold cursor-pointer">Home</Link>
-          <Link to="/about" className="mr-5 hover:text-blue-700 font-bold cursor-pointer">About Me</Link>
-          <Link to="/projects" className="mr-5 hover:text-blue-700 font-bold cursor-pointer">Project</Link>
-          <Link to="/contact" className="mr-5 hover:text-blue-700 font-bold cursor-pointer">Contact Me</Link>
-        </nav>
-        <a
-          href={cvUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center border-0 py-1 px-3 font-bold focus:outline-none rounded text-base mt-4 md:mt-0 text-black hover:text-blue-700"
-        >
-          Download CV
-        </a>
 
-        {/* Toggle Switch for Dark/Light Theme */}
-        <div className="ml-5 flex items-center font-bold">
-          <span className="mr-2">{darkMode ? 'Dark' : 'Light'}</span>
-          <label className="switch">
-            <input type="checkbox" checked={darkMode} onChange={toggleTheme} />
-            <span className="slider round"></span>
-          </label>
+        <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+          <Link 
+            to="/" 
+            className="mr-5 hover:text-blue-700 dark:hover:text-blue-400 font-bold cursor-pointer transition-colors"
+          >
+            Home
+          </Link>
+          <Link 
+            to="/about" 
+            className="mr-5 hover:text-blue-700 dark:hover:text-blue-400 font-bold cursor-pointer transition-colors"
+          >
+            About Me
+          </Link>
+          <Link 
+            to="/projects" 
+            className="mr-5 hover:text-blue-700 dark:hover:text-blue-400 font-bold cursor-pointer transition-colors"
+          >
+            Projects
+          </Link>
+          <Link 
+            to="/contact" 
+            className="mr-5 hover:text-blue-700 dark:hover:text-blue-400 font-bold cursor-pointer transition-colors"
+          >
+            Contact Me
+          </Link>
+        </nav>
+
+        <div className="flex items-center space-x-4">
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-yellow-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
+
+          <a
+            href={cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center border-2 border-blue-600 dark:border-blue-400 py-1 px-4 font-bold focus:outline-none rounded-full text-base mt-4 md:mt-0 text-blue-600 dark:text-blue-400 hover:bg-blue-600 dark:hover:bg-blue-900 hover:text-white dark:hover:text-white transition-colors"
+          >
+            Download CV
+          </a>
         </div>
       </div>
     </header>
