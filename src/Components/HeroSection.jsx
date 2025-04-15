@@ -122,11 +122,11 @@ const HeroSection = () => {
           whileHover="hover"
         >
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-blue-600 rounded-2xl opacity-20 blur-lg"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-sky-200 to-blue-200 rounded-2xl opacity-20 blur-lg"></div>
             <motion.img 
-              src='final.png' 
+              src='profil.png' 
               alt="Showcase" 
-              className="object-cover w-full h-auto rounded-lg relative shadow-xl border-4 border-white dark:border-gray-800"
+              className="object-cover w-full h-auto rounded-lg relative"
             />
           </div>
         </motion.div>
