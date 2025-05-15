@@ -2,6 +2,16 @@
   {
     "id": 1,
     "category": "Project",
+    "title": "Realstatepro",
+    "description": "Integrated a full-stack real estate application, enabling users to list, browse, and manage properties with secure authentication and dynamic data handling",
+    "image": "project1.png",
+    "views": "1K",
+    "comments": "6",
+    "Livedemo": "https://estatepro-jade.vercel.app/"
+  },
+  {
+    "id": 2,
+    "category": "Project",
     "title": "The Weather App",
     "description": "Integrated a dynamic weather app in my portfolio, leveraging API data to display real-time conditions.",
     "image": "w.png",
@@ -10,7 +20,7 @@
     "Livedemo": "http://weatherinfo-rho.vercel.app"
   },
   {
-    "id": 2,
+    "id": 3,
     "category": "Project",
     "title": "Ecommerce Website",
     "description": "Developed a fully functional e-commerce website with user-friendly navigation, seamless product browsing, and a responsive design, enhancing the online shopping experience.",
@@ -21,7 +31,7 @@
   },
   
   {
-    "id": 3,
+    "id": 4,
     "category": "Project",
     "title": "College Website",
     "description": "Developed a fully functional college website with intuitive navigation, responsive design, and organized content structure, improving user engagement and accessibility.",
