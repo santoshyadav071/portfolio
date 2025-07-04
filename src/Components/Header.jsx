@@ -4,7 +4,7 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 import myimage from "../assets/myimage.jpg";
 
 const Header = () => {
-  const cvUrl = 'santosh.cv.pdf';
+  const cvUrl = 'santosh.resum.pdf';
   const [darkMode, setDarkMode] = useState(() => {
     // Check localStorage for saved preference or use system preference
     const savedMode = localStorage.getItem('darkMode');
