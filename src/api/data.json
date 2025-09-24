@@ -43,6 +43,32 @@
       "title": "AI",
       "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
       "image": "ai.png"
+    },
+    {
+      "title": "Node.js",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "node.png"
+    },
+    {
+      "title": "MongoDB",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "mongodb.png"
+    },
+    {
+      "title": "Express.js",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "express.jpeg"
+    },
+    {
+      "title": "Deployment",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "deployment.webp"
+    },
+    {
+      "title": "Authentication",
+      "description": "Experienced with Bootstrap for creating responsive, mobile-first web layouts.",
+      "image": "auth.png"
     }
+    
   ]
   
