@@ -124,8 +124,8 @@ const HeroSection = () => {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-sky-200 to-blue-200 rounded-2xl opacity-20 blur-lg"></div>
             <motion.img 
-              src='santosh_yadav_softwear.png' 
-              alt="santosh_yadav_softwear_img" 
+              src='santosh-yadav-software-engineer.jpg' 
+              alt="santosh-yadav-software-engineer.jpg" 
               className="object-cover w-full h-auto rounded-lg relative"
             />
           </div>
